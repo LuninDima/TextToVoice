@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         super.onCreate(savedInstanceState)
         binding =ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        button = this.button
-        textView = this.textView
+
         tts = TextToSpeech(this, this)
         button = binding.button
         textView = binding.textView
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onInit(status: Int) {
         Log.d("mylogs", "test")
         if(status == TextToSpeech.SUCCESS){
-            var output = tts!!.setLanguage(Locale.getDefault())
+            val output = tts!!.setLanguage(Locale.getDefault())
             if(status == TextToSpeech.LANG_MISSING_DATA || output == TextToSpeech.LANG_NOT_SUPPORTED){
                 Toast.makeText(this, "Not Supported", Toast.LENGTH_SHORT).show()
             } else{
